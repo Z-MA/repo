@@ -1,0 +1,6 @@
+Added Component: Designator=DLDR(CBB 20*23*6)
+Add component. Clean all parameters for all variants
+Added Pin To Net: NetName=M11_OUT Pin=DLDR-1
+Added Pin To Net: NetName=M12_OUT Pin=DLDR-2
+Added Member To Class: ClassName=Sheet1 Member=Component DLDR CBB22
+Added Room: Name=Sheet1

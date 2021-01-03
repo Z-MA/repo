@@ -1,0 +1,69 @@
+Change component parameters: Designator = "P1"; Footprint = "HDR2.54-M-LS-2x3P"; UniqueID = "\ISBDLRAJ"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LatestRevisionDate"; Value = "17-Jul-2002"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "LatestRevisionNote"; Value = "Re-released for DXP Platform."; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Change component parameters: Designator = "P2"; Footprint = "HDR2.54-LI-4P"; UniqueID = "\NDSTAHPL"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LatestRevisionDate"; Value = "17-Jul-2002"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "LatestRevisionNote"; Value = "Re-released for DXP Platform."; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Change component parameters: Designator = "P3"; Footprint = "HDR2.54-LI-4P"; UniqueID = "\BGQBSRUA"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LatestRevisionDate"; Value = "17-Jul-2002"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "LatestRevisionNote"; Value = "Re-released for DXP Platform."; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Change component parameters: Designator = "P4"; Footprint = "HDR2.54-LI-2P"; UniqueID = "\PTESIFKG"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "LatestRevisionDate"; Value = "17-Jul-2002"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "LatestRevisionNote"; Value = "Re-released for DXP Platform."; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Added Component: Designator=GLJC(SOP8)
+Add component. Clean all parameters for all variants
+Added Component: Designator=J1(KFHB9500-4P)
+Add component. Clean all parameters for all variants
+Added Component: Designator=JDQ1(SLA-xxVDC-SL-C)
+Add component. Clean all parameters for all variants
+Added Pin To Net: NetName=12V Pin=D7-K
+Added Pin To Net: NetName=M11_OUT Pin=GLJC-3
+Added Pin To Net: NetName=M11_OUT Pin=GLJC-4
+Added Pin To Net: NetName=GND Pin=GLJC-5
+Added Pin To Net: NetName=NetC15_2 Pin=GLJC-6
+Added Pin To Net: NetName=NetGLJC_7 Pin=GLJC-7
+Added Pin To Net: NetName=JDQ11 Pin=GLJC-8
+Added Pin To Net: NetName=12V Pin=J1-1
+Added Pin To Net: NetName=GND Pin=J1-2
+Added Pin To Net: NetName=M12_OUT Pin=J1-3
+Added Pin To Net: NetName=M11_OUT Pin=J1-4
+Added Pin To Net: NetName=JDQ12 Pin=JDQ1-1
+Added Pin To Net: NetName=JDQ11 Pin=JDQ1-2
+Added Pin To Net: NetName=12V Pin=JDQ1-4
+Added Pin To Net: NetName=GND Pin=JDQ1-5
+Added Pin To Net: NetName=12V Pin=YM3-2
+Added Pin To Net: NetName=M11_OUT_JC Pin=GLJC-1
+Added Pin To Net: NetName=M11_OUT_JC Pin=GLJC-2
+Added Pin To Net: NetName=M11_OUT_JC Pin=JDQ1-3
+Added Pin To Net: NetName=M11_OUT_JC Pin=JDQ1-6
+Added Net: Name=M11_OUT_JC
+Added Member To Class: ClassName=Sheet1 Member=Component DLDR CBB22
+Added Member To Class: ClassName=Sheet1 Member=Component GLJC ACS712
+Added Member To Class: ClassName=Sheet1 Member=Component J1 KFHB9500
+Added Member To Class: ClassName=Sheet1 Member=Component JDQ1 SLA-05VDC-SL-C
+Added Member To Class: ClassName=Sheet1 Member=Component R3 0R
+Added Member To Class: ClassName=Sheet1 Member=Component R45 2K
+Added Member To Class: ClassName=Sheet1 Member=Component  stm32f103
+Added Member To Class: ClassName=Sheet1 Member=Component U? TM1650
+Added Member To Class: ClassName=Sheet1 Member=Component W1 LM2596-5.0
+Added Member To Class: ClassName=Sheet1 Member=Component W2 AMS1117
+Added Member To Class: ClassName=Sheet1 Member=Component X1 32.768K
+Added Member To Class: ClassName=Sheet1 Member=Component X2 8M
+Added Member To Class: ClassName=Sheet1 Member=Component X PC817
+Added Member To Class: ClassName=Sheet1 Member=Component XXCF PC817
+Added Member To Class: ClassName=Sheet1 Member=Component XXING PC817
+Added Member To Class: ClassName=Sheet1 Member=Component XX PC817
+Added Member To Class: ClassName=Sheet1 Member=Component YM1 
+Added Member To Class: ClassName=Sheet1 Member=Component YM2 
+Added Member To Class: ClassName=Sheet1 Member=Component YM3 
+Added Member To Class: ClassName=Sheet1 Member=Component ZHABJ PC817
+Added Member To Class: ClassName=Sheet1 Member=Component ZHA PC817
+Added Room: Name=Sheet1

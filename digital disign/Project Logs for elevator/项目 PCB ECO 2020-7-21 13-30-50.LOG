@@ -1,0 +1,12 @@
+Added Component: Designator=GLJC(SOP8)
+Add component. Clean all parameters for all variants
+Added Pin To Net: NetName=M11_OUT_JC Pin=GLJC-1
+Added Pin To Net: NetName=M11_OUT_JC Pin=GLJC-2
+Added Pin To Net: NetName=M11_OUT Pin=GLJC-3
+Added Pin To Net: NetName=M11_OUT Pin=GLJC-4
+Added Pin To Net: NetName=GND Pin=GLJC-5
+Added Pin To Net: NetName=NetC15_2 Pin=GLJC-6
+Added Pin To Net: NetName=NetGLJC_7 Pin=GLJC-7
+Added Pin To Net: NetName=JDQ11 Pin=GLJC-8
+Added Member To Class: ClassName=Sheet1 Member=Component GLJC ACS712
+Added Room: Name=Sheet1

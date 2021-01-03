@@ -1,0 +1,4 @@
+Change Component Footprint: Designator=DLDR Old Footprint=CBB 20*23*17 New Footprint=CBB 20*23*6
+Added Member To Class: ClassName=Sheet1 Member=Component DLDR CBB22
+Added Member To Class: ClassName=Sheet1 Member=Component JDQ1 SLA-05VDC-SL-C
+Added Room: Name=Sheet1

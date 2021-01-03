@@ -1,0 +1,21 @@
+Added Component: Designator=J2(KF128-5.08-2P)
+Add component. Clean all parameters for all variants
+Added Pin To Net: NetName=M22_OUT Pin=J2-1
+Added Pin To Net: NetName=M21_OUT Pin=J2-2
+Added Member To Class: ClassName=Sheet1 Member=Component J2 KF128-5.0
+Added Member To Class: ClassName=Sheet1 Member=Component  stm32f103
+Added Member To Class: ClassName=Sheet1 Member=Component U? TM1650
+Added Member To Class: ClassName=Sheet1 Member=Component W1 LM2596-5.0
+Added Member To Class: ClassName=Sheet1 Member=Component W2 AMS1117
+Added Member To Class: ClassName=Sheet1 Member=Component X1 32.768K
+Added Member To Class: ClassName=Sheet1 Member=Component X2 8M
+Added Member To Class: ClassName=Sheet1 Member=Component X PC817
+Added Member To Class: ClassName=Sheet1 Member=Component XXCF PC817
+Added Member To Class: ClassName=Sheet1 Member=Component XXING PC817
+Added Member To Class: ClassName=Sheet1 Member=Component XX PC817
+Added Member To Class: ClassName=Sheet1 Member=Component YM1 
+Added Member To Class: ClassName=Sheet1 Member=Component YM2 
+Added Member To Class: ClassName=Sheet1 Member=Component YM3 
+Added Member To Class: ClassName=Sheet1 Member=Component ZHABJ PC817
+Added Member To Class: ClassName=Sheet1 Member=Component ZHA PC817
+Added Room: Name=Sheet1

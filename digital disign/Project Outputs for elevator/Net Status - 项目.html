@@ -1,0 +1,896 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 { 
+			font-family : segoe ui;
+			color : black;
+			background-color : #EDE7D9;
+			padding: 0.3em;
+		}
+
+		h1 {
+			font-size: 1.2em;
+		}		
+
+		h2 {
+			font-size: 1.2em;
+		}
+
+		body { 
+			font-family : segoe ui;
+		}
+
+		td, th {  
+			padding: 0.5em;
+			text-align : left;
+		}
+		th { 
+			background-color : #EEEEEE;
+		
+		}
+		th.column1, td.column1 { 
+			width : 50%; 
+		}
+
+        th.column2, td.column2 {
+            width : 25%;
+        }
+
+		table { 
+			width : 100%; 
+            font-size: 0.9em;
+		}
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+		{
+			left : 0;
+			top : 0;
+			padding: 0em;
+			padding-top : 0.1em;
+			border : 0px solid black;
+			width : 100%;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.front_matter_column1 {
+			width : 5em;
+			font-weight: bold;
+		}
+
+		.front_matter_column2 {
+			width: 0.1em;
+		}
+
+		.front_matter_column3 {
+			width : auto;
+		}
+
+		.total_column1, .total_column {
+			font-weight : bold;
+		}
+		.total_column1 {
+			text-align : left;
+		}
+		.warning, .error { 
+			color : red;
+			font-weight : bold;
+		}	
+		tr.onmouseout_odd { 
+			background-color : #white;
+		}
+		tr.onmouseout_even { 
+			background-color : #FAFAFA;
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : #EEEEEE;
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #21489e;
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+			
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);		
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {	
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}	
+	</script><title>Net Status Report</title>
+</head>
+<body onload="document.getElementById('radio_mil').click()"><img ALT="Altium" src="
+			file://D:\Profession_Software\Altium Designer\AD18_data\Templates\AD_logo.png
+		"><a href="dxpprocess://Client:SetupPreferences?Server=PCB|PageName=Reports" class="customize"><acronym title="dxpprocess://Client:SetupPreferences?Server=PCB|PageName=Reports">customize</acronym></a><h1>Net Status Report</h1>
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">2020/7/13</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">11:26:51</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">00:00:00</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3"><a href="file:///C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc" class="file"><acronym title="C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc">C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc</acronym></a></td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Units:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">
+<form><input type="radio" name="radio_units" id="radio_mm" onclick="changeUnits(this, 'mm')">mm<input type="radio" name="radio_units" id="radio_mil" onclick="changeUnits(this, 'mil')">mils</form>
+</td>
+</tr>
+</table><a name="IDQVALU11YELILBSLLXHHRPJBM2F2X3I4GOGLXLXEUKFHJGCDKLE4P"><table>
+<tr>
+<th class="column1">Nets</th>
+<th class="column2">Layer</th>
+<th class="column3">Length</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">12V</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">12V_IN</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1031mil|Location2.X=4401.14mil|Location1.Y=1067mil|Location2.Y=5724mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1031mil|Location2.X=4401.14mil|Location1.Y=1067mil|Location2.Y=5724mil|Absolute=True">3V3</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3557.535mil|Location2.X=4895.684mil|Location1.Y=3987.258mil|Location2.Y=4359.827mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3557.535mil|Location2.X=4895.684mil|Location1.Y=3987.258mil|Location2.Y=4359.827mil|Absolute=True">A/KI1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3557.535mil|Location2.X=4895.684mil|Location1.Y=4320.786mil|Location2.Y=4584.314mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3557.535mil|Location2.X=4895.684mil|Location1.Y=4320.786mil|Location2.Y=4584.314mil|Absolute=True">B/KI2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2681.394mil|Location2.X=3641.205mil|Location1.Y=3216.551mil|Location2.Y=4739.079mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2681.394mil|Location2.X=3641.205mil|Location1.Y=3216.551mil|Location2.Y=4739.079mil|Absolute=True">BOOT0</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3957.535mil|Location2.X=4439.37mil|Location1.Y=4277.535mil|Location2.Y=4459.827mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3957.535mil|Location2.X=4439.37mil|Location1.Y=4277.535mil|Location2.Y=4459.827mil|Absolute=True">C/KI3</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3957.535mil|Location2.X=4439.37mil|Location1.Y=4077.535mil|Location2.Y=4509.827mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3957.535mil|Location2.X=4439.37mil|Location1.Y=4077.535mil|Location2.Y=4509.827mil|Absolute=True">D/KI4</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3957.535mil|Location2.X=4469mil|Location1.Y=4477.535mil|Location2.Y=4849mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3957.535mil|Location2.X=4469mil|Location1.Y=4477.535mil|Location2.Y=4849mil|Absolute=True">DIG1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3557.535mil|Location2.X=4228.37mil|Location1.Y=4377.535mil|Location2.Y=4846mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3557.535mil|Location2.X=4228.37mil|Location1.Y=4377.535mil|Location2.Y=4846mil|Absolute=True">DIG2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3557.535mil|Location2.X=4228.37mil|Location1.Y=4277.535mil|Location2.Y=4459.827mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3557.535mil|Location2.X=4228.37mil|Location1.Y=4277.535mil|Location2.Y=4459.827mil|Absolute=True">DIG3</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3557.535mil|Location2.X=4228.37mil|Location1.Y=3977.535mil|Location2.Y=4409.827mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3557.535mil|Location2.X=4228.37mil|Location1.Y=3977.535mil|Location2.Y=4409.827mil|Absolute=True">DIG4</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3957.535mil|Location2.X=4439.37mil|Location1.Y=4177.535mil|Location2.Y=4709.827mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3957.535mil|Location2.X=4439.37mil|Location1.Y=4177.535mil|Location2.Y=4709.827mil|Absolute=True">DP/KP</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3957.535mil|Location2.X=4439.37mil|Location1.Y=3977.535mil|Location2.Y=4559.827mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3957.535mil|Location2.X=4439.37mil|Location1.Y=3977.535mil|Location2.Y=4559.827mil|Absolute=True">E/KI5</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3557.535mil|Location2.X=4439.37mil|Location1.Y=4177.535mil|Location2.Y=4609.827mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3557.535mil|Location2.X=4439.37mil|Location1.Y=4177.535mil|Location2.Y=4609.827mil|Absolute=True">F/KI6</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3957.535mil|Location2.X=4439.37mil|Location1.Y=4377.535mil|Location2.Y=4659.827mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3957.535mil|Location2.X=4439.37mil|Location1.Y=4377.535mil|Location2.Y=4659.827mil|Absolute=True">G/KI7</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1091mil|Location2.X=4510.118mil|Location1.Y=1266.654mil|Location2.Y=5724mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1091mil|Location2.X=4510.118mil|Location1.Y=1266.654mil|Location2.Y=5724mil|Absolute=True">GND</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1091mil|Location2.X=4439.37mil|Location1.Y=1069.15mil|Location2.Y=5429mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1091mil|Location2.X=4439.37mil|Location1.Y=1069.15mil|Location2.Y=5429mil|Absolute=True">JDQ11</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2910.056mil|Location2.X=3608.685mil|Location1.Y=1259.78mil|Location2.Y=1420mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2910.056mil|Location2.X=3608.685mil|Location1.Y=1259.78mil|Location2.Y=1420mil|Absolute=True">JDQ12</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2906.63mil|Location2.X=3608.685mil|Location1.Y=1711.63mil|Location2.Y=2527.582mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2906.63mil|Location2.X=3608.685mil|Location1.Y=1711.63mil|Location2.Y=2527.582mil|Absolute=True">JDQ22</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1796.945mil|Location2.X=3384mil|Location1.Y=2276mil|Location2.Y=3900.497mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1796.945mil|Location2.X=3384mil|Location1.Y=2276mil|Location2.Y=3900.497mil|Absolute=True">JDQ32</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1796.945mil|Location2.X=3384mil|Location1.Y=2746mil|Location2.Y=4530.497mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1796.945mil|Location2.X=3384mil|Location1.Y=2746mil|Location2.Y=4530.497mil|Absolute=True">JDQ42</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">M11_OUT</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">M12_OUT</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1142.102mil|Location2.X=1844.315mil|Location1.Y=3538.165mil|Location2.Y=3788.213mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1142.102mil|Location2.X=1844.315mil|Location1.Y=3538.165mil|Location2.Y=3788.213mil|Absolute=True">M21_OUT</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1142.102mil|Location2.X=1844.315mil|Location1.Y=3881.787mil|Location2.Y=4294.275mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1142.102mil|Location2.X=1844.315mil|Location1.Y=3881.787mil|Location2.Y=4294.275mil|Absolute=True">M22_OUT</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3775.921mil|Location2.X=4500.51mil|Location1.Y=3058.087mil|Location2.Y=3201.387mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3775.921mil|Location2.X=4500.51mil|Location1.Y=3058.087mil|Location2.Y=3201.387mil|Absolute=True">NRST</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1118mil|Location2.X=1249.433mil|Location1.Y=4263.717mil|Location2.Y=4342.583mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1118mil|Location2.X=1249.433mil|Location1.Y=4263.717mil|Location2.Y=4342.583mil|Absolute=True">NetBEEP_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">NetC15_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">NetD1_K</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">NetD8_A</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">NetGLJC_7</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">NetJXH1_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3483.392mil|Location2.X=3874.63mil|Location1.Y=1251.654mil|Location2.Y=1422.15mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3483.392mil|Location2.X=3874.63mil|Location1.Y=1251.654mil|Location2.Y=1422.15mil|Absolute=True">NetJXH1_3</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">NetJXH1_4</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3781.63mil|Location2.X=3965.748mil|Location1.Y=1514.15mil|Location2.Y=1674.646mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3781.63mil|Location2.X=3965.748mil|Location1.Y=1514.15mil|Location2.Y=1674.646mil|Absolute=True">NetJXH2_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3483.392mil|Location2.X=3874.63mil|Location1.Y=1711.654mil|Location2.Y=1892.15mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3483.392mil|Location2.X=3874.63mil|Location1.Y=1711.654mil|Location2.Y=1892.15mil|Absolute=True">NetJXH2_3</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3483.392mil|Location2.X=3664.63mil|Location1.Y=1514.15mil|Location2.Y=1674.646mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3483.392mil|Location2.X=3664.63mil|Location1.Y=1514.15mil|Location2.Y=1674.646mil|Absolute=True">NetJXH2_4</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3631mil|Location2.X=3810.118mil|Location1.Y=1941mil|Location2.Y=2101.496mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3631mil|Location2.X=3810.118mil|Location1.Y=1941mil|Location2.Y=2101.496mil|Absolute=True">NetJXH3_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3327.762mil|Location2.X=3714mil|Location1.Y=2138.504mil|Location2.Y=2329mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3327.762mil|Location2.X=3714mil|Location1.Y=2138.504mil|Location2.Y=2329mil|Absolute=True">NetJXH3_3</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3327.762mil|Location2.X=3437.998mil|Location1.Y=1936mil|Location2.Y=2101.496mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3327.762mil|Location2.X=3437.998mil|Location1.Y=1936mil|Location2.Y=2101.496mil|Absolute=True">NetJXH3_4</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3626mil|Location2.X=3807.238mil|Location1.Y=2406mil|Location2.Y=2576.496mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3626mil|Location2.X=3807.238mil|Location1.Y=2406mil|Location2.Y=2576.496mil|Absolute=True">NetJXH4_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3324.882mil|Location2.X=3719mil|Location1.Y=2613.504mil|Location2.Y=2799mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3324.882mil|Location2.X=3719mil|Location1.Y=2613.504mil|Location2.Y=2799mil|Absolute=True">NetJXH4_3</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3324.882mil|Location2.X=3509mil|Location1.Y=2406mil|Location2.Y=2576.496mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3324.882mil|Location2.X=3509mil|Location1.Y=2406mil|Location2.Y=2576.496mil|Absolute=True">NetJXH4_4</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4491mil|Location2.X=4583.37mil|Location1.Y=3986.472mil|Location2.Y=4849mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4491mil|Location2.X=4583.37mil|Location1.Y=3986.472mil|Location2.Y=4849mil|Absolute=True">NetK2_3</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4241mil|Location2.X=4583.37mil|Location1.Y=4145mil|Location2.Y=4846mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4241mil|Location2.X=4583.37mil|Location1.Y=4145mil|Location2.Y=4846mil|Absolute=True">NetK3_3</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">NetLED1_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3436mil|Location2.X=3509mil|Location1.Y=2866mil|Location2.Y=2924mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3436mil|Location2.X=3509mil|Location1.Y=2866mil|Location2.Y=2924mil|Absolute=True">NetLED2_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1336mil|Location2.X=1409mil|Location1.Y=4101mil|Location2.Y=4159mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1336mil|Location2.X=1409mil|Location1.Y=4101mil|Location2.Y=4159mil|Absolute=True">NetLED3_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1031mil|Location2.X=1104mil|Location1.Y=4101mil|Location2.Y=4159mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1031mil|Location2.X=1104mil|Location1.Y=4101mil|Location2.Y=4159mil|Absolute=True">NetLED4_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1118mil|Location2.X=1269mil|Location1.Y=4355mil|Location2.Y=4434mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1118mil|Location2.X=1269mil|Location1.Y=4355mil|Location2.Y=4434mil|Absolute=True">NetQ5_B</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">NetR11_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4326mil|Location2.X=4505.118mil|Location1.Y=1387.156mil|Location2.Y=1546.496mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4326mil|Location2.X=4505.118mil|Location1.Y=1387.156mil|Location2.Y=1546.496mil|Absolute=True">NetR13_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4022.762mil|Location2.X=4394mil|Location1.Y=1386mil|Location2.Y=1546.496mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4022.762mil|Location2.X=4394mil|Location1.Y=1386mil|Location2.Y=1546.496mil|Absolute=True">NetR15_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4326mil|Location2.X=4505.118mil|Location1.Y=1691mil|Location2.Y=1861.496mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4326mil|Location2.X=4505.118mil|Location1.Y=1691mil|Location2.Y=1861.496mil|Absolute=True">NetR17_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4022.762mil|Location2.X=4394mil|Location1.Y=1691mil|Location2.Y=1861.496mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4022.762mil|Location2.X=4394mil|Location1.Y=1691mil|Location2.Y=1861.496mil|Absolute=True">NetR19_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4326mil|Location2.X=4505.118mil|Location1.Y=2011mil|Location2.Y=2176.496mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4326mil|Location2.X=4505.118mil|Location1.Y=2011mil|Location2.Y=2176.496mil|Absolute=True">NetR21_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4022.762mil|Location2.X=4394mil|Location1.Y=2011mil|Location2.Y=2176.496mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4022.762mil|Location2.X=4394mil|Location1.Y=2011mil|Location2.Y=2176.496mil|Absolute=True">NetR23_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">NetR25_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">NetR27_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4141mil|Location2.X=4510.118mil|Location1.Y=2671mil|Location2.Y=2834.496mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4141mil|Location2.X=4510.118mil|Location1.Y=2671mil|Location2.Y=2834.496mil|Absolute=True">NetR29_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4087.762mil|Location2.X=4430mil|Location1.Y=2636mil|Location2.Y=2808mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4087.762mil|Location2.X=4430mil|Location1.Y=2636mil|Location2.Y=2808mil|Absolute=True">NetR31_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">NetR9_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2796mil|Location2.X=3675.653mil|Location1.Y=3058.087mil|Location2.Y=4844mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2796mil|Location2.X=3675.653mil|Location1.Y=3058.087mil|Location2.Y=4844mil|Absolute=True">Net_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3736.551mil|Location2.X=4501.86mil|Location1.Y=3058.087mil|Location2.Y=3706.14mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3736.551mil|Location2.X=4501.86mil|Location1.Y=3058.087mil|Location2.Y=3706.14mil|Absolute=True">Net_5</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3756.237mil|Location2.X=4411.86mil|Location1.Y=3058.087mil|Location2.Y=3591.14mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3756.237mil|Location2.X=4411.86mil|Location1.Y=3058.087mil|Location2.Y=3591.14mil|Absolute=True">Net_6</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3815.291mil|Location2.X=4324mil|Location1.Y=2991mil|Location2.Y=3121.205mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3815.291mil|Location2.X=4324mil|Location1.Y=2991mil|Location2.Y=3121.205mil|Absolute=True">Net_9</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2522.535mil|Location2.X=3852.819mil|Location1.Y=3058.087mil|Location2.Y=4752.465mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2522.535mil|Location2.X=3852.819mil|Location1.Y=3058.087mil|Location2.Y=4752.465mil|Absolute=True">PA0</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2522.535mil|Location2.X=3872.503mil|Location1.Y=3058.087mil|Location2.Y=4852.465mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2522.535mil|Location2.X=3872.503mil|Location1.Y=3058.087mil|Location2.Y=4852.465mil|Absolute=True">PA1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3357.535mil|Location2.X=3774.079mil|Location1.Y=3388.795mil|Location2.Y=4657.465mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3357.535mil|Location2.X=3774.079mil|Location1.Y=3388.795mil|Location2.Y=4657.465mil|Absolute=True">PA10</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1463.205mil|Location2.X=3754.393mil|Location1.Y=3388.795mil|Location2.Y=4861.913mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1463.205mil|Location2.X=3754.393mil|Location1.Y=3388.795mil|Location2.Y=4861.913mil|Absolute=True">PA11</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3716mil|Location2.X=3784mil|Location1.Y=2406mil|Location2.Y=3451.913mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3716mil|Location2.X=3784mil|Location1.Y=2406mil|Location2.Y=3451.913mil|Absolute=True">PA12</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3697.181mil|Location2.X=3789mil|Location1.Y=1941mil|Location2.Y=3451.913mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3697.181mil|Location2.X=3789mil|Location1.Y=1941mil|Location2.Y=3451.913mil|Absolute=True">PA13</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3578.087mil|Location2.X=3939.63mil|Location1.Y=1514.15mil|Location2.Y=3372.189mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3578.087mil|Location2.X=3939.63mil|Location1.Y=1514.15mil|Location2.Y=3372.189mil|Absolute=True">PA14</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3578.087mil|Location2.X=3939.646mil|Location1.Y=1054.15mil|Location2.Y=3352.503mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3578.087mil|Location2.X=3939.646mil|Location1.Y=1054.15mil|Location2.Y=3352.503mil|Absolute=True">PA15</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3257.535mil|Location2.X=3892.189mil|Location1.Y=3058.087mil|Location2.Y=4852.465mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3257.535mil|Location2.X=3892.189mil|Location1.Y=3058.087mil|Location2.Y=4852.465mil|Absolute=True">PA2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3357.535mil|Location2.X=3971.913mil|Location1.Y=3137.811mil|Location2.Y=4852.465mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3357.535mil|Location2.X=3971.913mil|Location1.Y=3137.811mil|Location2.Y=4852.465mil|Absolute=True">PA3</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1581.315mil|Location2.X=4270.354mil|Location1.Y=3106.418mil|Location2.Y=3274.748mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1581.315mil|Location2.X=4270.354mil|Location1.Y=3106.418mil|Location2.Y=3274.748mil|Absolute=True">PA4</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1246mil|Location2.X=3971.913mil|Location1.Y=3177.181mil|Location2.Y=4159mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1246mil|Location2.X=3971.913mil|Location1.Y=3177.181mil|Location2.Y=4159mil|Absolute=True">PA5</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1613.205mil|Location2.X=3971.913mil|Location1.Y=3196.867mil|Location2.Y=4861.913mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1613.205mil|Location2.X=3971.913mil|Location1.Y=3196.867mil|Location2.Y=4861.913mil|Absolute=True">PA6</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1563.205mil|Location2.X=3971.913mil|Location1.Y=3216.551mil|Location2.Y=4861.913mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1563.205mil|Location2.X=3971.913mil|Location1.Y=3216.551mil|Location2.Y=4861.913mil|Absolute=True">PA7</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1513.205mil|Location2.X=3813.449mil|Location1.Y=3388.795mil|Location2.Y=4861.913mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1513.205mil|Location2.X=3813.449mil|Location1.Y=3388.795mil|Location2.Y=4861.913mil|Absolute=True">PA8</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3257.535mil|Location2.X=3793.763mil|Location1.Y=3388.795mil|Location2.Y=4657.465mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3257.535mil|Location2.X=3793.763mil|Location1.Y=3388.795mil|Location2.Y=4657.465mil|Absolute=True">PA9</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3908.795mil|Location2.X=4228.37mil|Location1.Y=3236.237mil|Location2.Y=4659.827mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3908.795mil|Location2.X=4228.37mil|Location1.Y=3236.237mil|Location2.Y=4659.827mil|Absolute=True">PB0</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3908.795mil|Location2.X=4228.37mil|Location1.Y=3255.921mil|Location2.Y=4609.827mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3908.795mil|Location2.X=4228.37mil|Location1.Y=3255.921mil|Location2.Y=4609.827mil|Absolute=True">PB1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3908.795mil|Location2.X=4505.118mil|Location1.Y=1691mil|Location2.Y=3313.133mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3908.795mil|Location2.X=4505.118mil|Location1.Y=1691mil|Location2.Y=3313.133mil|Absolute=True">PB10</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3908.795mil|Location2.X=4132.998mil|Location1.Y=1691mil|Location2.Y=3332.819mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3908.795mil|Location2.X=4132.998mil|Location1.Y=1691mil|Location2.Y=3332.819mil|Absolute=True">PB11</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3874.347mil|Location2.X=4505.118mil|Location1.Y=1386mil|Location2.Y=3451.913mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3874.347mil|Location2.X=4505.118mil|Location1.Y=1386mil|Location2.Y=3451.913mil|Absolute=True">PB12</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3854.661mil|Location2.X=4132.998mil|Location1.Y=1386mil|Location2.Y=3451.913mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3854.661mil|Location2.X=4132.998mil|Location1.Y=1386mil|Location2.Y=3451.913mil|Absolute=True">PB13</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3834.977mil|Location2.X=4560.118mil|Location1.Y=1037mil|Location2.Y=3451.913mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3834.977mil|Location2.X=4560.118mil|Location1.Y=1037mil|Location2.Y=3451.913mil|Absolute=True">PB14</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3815.291mil|Location2.X=4187.998mil|Location1.Y=1037mil|Location2.Y=3451.913mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3815.291mil|Location2.X=4187.998mil|Location1.Y=1037mil|Location2.Y=3451.913mil|Absolute=True">PB15</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2905.802mil|Location2.X=3971.913mil|Location1.Y=3275.607mil|Location2.Y=4739.079mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2905.802mil|Location2.X=3971.913mil|Location1.Y=3275.607mil|Location2.Y=4739.079mil|Absolute=True">PB2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1291mil|Location2.X=3641.205mil|Location1.Y=3314.977mil|Location2.Y=4434mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1291mil|Location2.X=3641.205mil|Location1.Y=3314.977mil|Location2.Y=4434mil|Absolute=True">PB3</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3578.087mil|Location2.X=4340mil|Location1.Y=2636mil|Location2.Y=3313.133mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3578.087mil|Location2.X=4340mil|Location1.Y=2636mil|Location2.Y=3313.133mil|Absolute=True">PB4</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3578.087mil|Location2.X=4340mil|Location1.Y=2636mil|Location2.Y=3293.449mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3578.087mil|Location2.X=4340mil|Location1.Y=2636mil|Location2.Y=3293.449mil|Absolute=True">PB5</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3578.087mil|Location2.X=4179mil|Location1.Y=2306mil|Location2.Y=3273.763mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3578.087mil|Location2.X=4179mil|Location1.Y=2306mil|Location2.Y=3273.763mil|Absolute=True">PB6</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3578.087mil|Location2.X=4179mil|Location1.Y=2306mil|Location2.Y=3254.079mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3578.087mil|Location2.X=4179mil|Location1.Y=2306mil|Location2.Y=3254.079mil|Absolute=True">PB7</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3578.087mil|Location2.X=4505.118mil|Location1.Y=2006mil|Location2.Y=3214.709mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3578.087mil|Location2.X=4505.118mil|Location1.Y=2006mil|Location2.Y=3214.709mil|Absolute=True">PB8</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3578.087mil|Location2.X=4132.998mil|Location1.Y=2006mil|Location2.Y=3195.023mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3578.087mil|Location2.X=4132.998mil|Location1.Y=2006mil|Location2.Y=3195.023mil|Absolute=True">PB9</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1126mil|Location2.X=3695.339mil|Location1.Y=3058.087mil|Location2.Y=4159mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1126mil|Location2.X=3695.339mil|Location1.Y=3058.087mil|Location2.Y=4159mil|Absolute=True">PC13</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3697.181mil|Location2.X=4488.685mil|Location1.Y=3058.087mil|Location2.Y=3481.14mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3697.181mil|Location2.X=4488.685mil|Location1.Y=3058.087mil|Location2.Y=3481.14mil|Absolute=True">PC14</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3716.867mil|Location2.X=4411.86mil|Location1.Y=3058.087mil|Location2.Y=3481.14mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3716.867mil|Location2.X=4411.86mil|Location1.Y=3058.087mil|Location2.Y=3481.14mil|Absolute=True">PC15</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4416mil|Location2.X=4837.898mil|Location1.Y=1691mil|Location2.Y=2278.213mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4416mil|Location2.X=4837.898mil|Location1.Y=1691mil|Location2.Y=2278.213mil|Absolute=True">RT</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4027.762mil|Location2.X=4837.898mil|Location1.Y=2321mil|Location2.Y=3108.213mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4027.762mil|Location2.X=4837.898mil|Location1.Y=2321mil|Location2.Y=3108.213mil|Absolute=True">RTBJ</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4411mil|Location2.X=4837.898mil|Location1.Y=1057.156mil|Location2.Y=1478.213mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4411mil|Location2.X=4837.898mil|Location1.Y=1057.156mil|Location2.Y=1478.213mil|Absolute=True">S</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4411mil|Location2.X=4837.898mil|Location1.Y=1057.156mil|Location2.Y=1678.213mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4411mil|Location2.X=4837.898mil|Location1.Y=1057.156mil|Location2.Y=1678.213mil|Absolute=True">SS</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4027.762mil|Location2.X=4837.898mil|Location1.Y=2671mil|Location2.Y=3508.213mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4027.762mil|Location2.X=4837.898mil|Location1.Y=2671mil|Location2.Y=3508.213mil|Absolute=True">SXCF</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4416mil|Location2.X=4837.898mil|Location1.Y=2011mil|Location2.Y=2678.213mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4416mil|Location2.X=4837.898mil|Location1.Y=2011mil|Location2.Y=2678.213mil|Absolute=True">SXING</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4416mil|Location2.X=4837.898mil|Location1.Y=1387.156mil|Location2.Y=1878.213mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4416mil|Location2.X=4837.898mil|Location1.Y=1387.156mil|Location2.Y=1878.213mil|Absolute=True">X</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4416mil|Location2.X=4837.898mil|Location1.Y=1386mil|Location2.Y=2078.213mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4416mil|Location2.X=4837.898mil|Location1.Y=1386mil|Location2.Y=2078.213mil|Absolute=True">XX</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4399.882mil|Location2.X=4837.898mil|Location1.Y=2651mil|Location2.Y=3708.213mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4399.882mil|Location2.X=4837.898mil|Location1.Y=2651mil|Location2.Y=3708.213mil|Absolute=True">XXCF</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4416mil|Location2.X=4837.898mil|Location1.Y=2011mil|Location2.Y=2878.213mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4416mil|Location2.X=4837.898mil|Location1.Y=2011mil|Location2.Y=2878.213mil|Absolute=True">XXING</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4416mil|Location2.X=4837.898mil|Location1.Y=1691mil|Location2.Y=2478.213mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4416mil|Location2.X=4837.898mil|Location1.Y=1691mil|Location2.Y=2478.213mil|Absolute=True">ZHA</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\%E5%8E%9F%E7%90%86%E5%9B%BE\%E9%A1%B9%E7%9B%AE.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4399.882mil|Location2.X=4837.898mil|Location1.Y=2319mil|Location2.Y=3308.213mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Majicheng\Desktop\原理图\项目.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4399.882mil|Location2.X=4837.898mil|Location1.Y=2319mil|Location2.Y=3308.213mil|Absolute=True">ZHABJ</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br></body>
+</html>

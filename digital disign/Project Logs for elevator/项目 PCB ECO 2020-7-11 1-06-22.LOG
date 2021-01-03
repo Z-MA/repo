@@ -1,0 +1,10 @@
+Added Component: Designator=JDQ2(SLA-xxVDC-SL-C)
+Add component. Clean all parameters for all variants
+Added Pin To Net: NetName=JDQ22 Pin=JDQ2-1
+Added Pin To Net: NetName=JDQ11 Pin=JDQ2-2
+Added Pin To Net: NetName=M12_OUT Pin=JDQ2-3
+Added Pin To Net: NetName=GND Pin=JDQ2-4
+Added Pin To Net: NetName=12V Pin=JDQ2-5
+Added Pin To Net: NetName=M12_OUT Pin=JDQ2-6
+Added Member To Class: ClassName=Sheet1 Member=Component JDQ2 SLA-05VDC-SL-C
+Added Room: Name=Sheet1

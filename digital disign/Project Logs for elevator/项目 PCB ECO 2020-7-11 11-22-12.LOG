@@ -1,0 +1,50 @@
+Added Component: Designator=JDQ1(SLA-xxVDC-SL-C)
+Add component. Clean all parameters for all variants
+Added Component: Designator=JDQ2(SLA-xxVDC-SL-C)
+Add component. Clean all parameters for all variants
+Added Component: Designator=JDQ3(SRD-C_B)
+Add component. Clean all parameters for all variants
+Added Component: Designator=JDQ4(SRD-C_B)
+Add component. Clean all parameters for all variants
+Added Pin To Net: NetName=JDQ12 Pin=JDQ1-1
+Added Pin To Net: NetName=JDQ11 Pin=JDQ1-2
+Added Pin To Net: NetName=M11_OUT Pin=JDQ1-3
+Added Pin To Net: NetName=12V Pin=JDQ1-4
+Added Pin To Net: NetName=GND Pin=JDQ1-5
+Added Pin To Net: NetName=M11_OUT Pin=JDQ1-6
+Added Pin To Net: NetName=JDQ22 Pin=JDQ2-1
+Added Pin To Net: NetName=JDQ11 Pin=JDQ2-2
+Added Pin To Net: NetName=M12_OUT Pin=JDQ2-3
+Added Pin To Net: NetName=12V Pin=JDQ2-4
+Added Pin To Net: NetName=GND Pin=JDQ2-5
+Added Pin To Net: NetName=M12_OUT Pin=JDQ2-6
+Added Pin To Net: NetName=JDQ32 Pin=JDQ3-1
+Added Pin To Net: NetName=JDQ11 Pin=JDQ3-2
+Added Pin To Net: NetName=M21_OUT Pin=JDQ3-3
+Added Pin To Net: NetName=12V Pin=JDQ3-4
+Added Pin To Net: NetName=GND Pin=JDQ3-5
+Added Pin To Net: NetName=JDQ42 Pin=JDQ4-1
+Added Pin To Net: NetName=JDQ11 Pin=JDQ4-2
+Added Pin To Net: NetName=M22_OUT Pin=JDQ4-3
+Added Pin To Net: NetName=12V Pin=JDQ4-4
+Added Pin To Net: NetName=GND Pin=JDQ4-5
+Added Member To Class: ClassName=Sheet1 Member=Component JDQ1 SLA-05VDC-SL-C
+Added Member To Class: ClassName=Sheet1 Member=Component JDQ2 SLA-05VDC-SL-C
+Added Member To Class: ClassName=Sheet1 Member=Component JDQ3 SRD-05VDC-SL-C
+Added Member To Class: ClassName=Sheet1 Member=Component JDQ4 SRD-05VDC-SL-C
+Added Member To Class: ClassName=Sheet1 Member=Component  stm32f103
+Added Member To Class: ClassName=Sheet1 Member=Component U? TM1650
+Added Member To Class: ClassName=Sheet1 Member=Component W1 LM2596-5.0
+Added Member To Class: ClassName=Sheet1 Member=Component W2 AMS1117
+Added Member To Class: ClassName=Sheet1 Member=Component X1 32.768K
+Added Member To Class: ClassName=Sheet1 Member=Component X2 8M
+Added Member To Class: ClassName=Sheet1 Member=Component X PC817
+Added Member To Class: ClassName=Sheet1 Member=Component XXCF PC817
+Added Member To Class: ClassName=Sheet1 Member=Component XXING PC817
+Added Member To Class: ClassName=Sheet1 Member=Component XX PC817
+Added Member To Class: ClassName=Sheet1 Member=Component YM1 
+Added Member To Class: ClassName=Sheet1 Member=Component YM2 
+Added Member To Class: ClassName=Sheet1 Member=Component YM3 
+Added Member To Class: ClassName=Sheet1 Member=Component ZHABJ PC817
+Added Member To Class: ClassName=Sheet1 Member=Component ZHA PC817
+Added Room: Name=Sheet1
